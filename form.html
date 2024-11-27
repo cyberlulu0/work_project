@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramsay Referrals Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 1rem; /* Changed from 16px to 1rem */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #0d3050;
+            color: white;
+            line-height: 1.5;
+        }
+        .form-container {
+            width: 90%;
+            max-width: 50rem; /* Changed from 800px to 50rem */
+            background: #0194d3;
+            padding: 1.25rem; /* Changed from 20px to 1.25rem */
+            border-radius: 0.5rem; /* Changed from 8px to 0.5rem */
+            box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.2); /* Changed from 0 4px 6px */
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        .header img {
+            max-height: 3.125rem; /* Changed from 50px to 3.125rem */
+            margin-right: 0.625rem; /* Changed from 10px to 0.625rem */
+        }
+        h1, h2 {
+            text-align: center;
+            margin: 0;
+        }
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            margin-left: 20px;
+        }
+        label {
+            margin-left: 8px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul ul {
+            margin-left: 20px;
+        }
+        ul ul ul {
+            margin-left: 20px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #003f80;
+        }
+        .hidden {
+            display: none;
+        }
+        /* New styles for the label */
+        label[for="facility-name"] {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container" role="form" aria-labelledby="form-title">
+        <div class="header">
+            <img src="images/logo.png" alt="Ramsay Health Care Logo">
+            <h1 id="form-title">Ramsay Referrals Form</h1>
+        </div>
+        <p>To ensure that the appropriate services for each site are displayed when creating referrals through the Ramsay Referrals solution, please provide the details requested below. Your input will help facilitate a smooth transition to using the solution effectively.</p>
+
+        <form id="referral-form">
+            <!-- Facility Name -->
+            <label for="facility-name">Please enter the name of your Ramsay Facility:</label>
+            <input type="text" id="facility-name" name="facility-name" placeholder="Enter Facility Name" required>
+
+            <!-- Services -->
+            <p>Please select the inpatient services available at your facility, along with the variations for each referral type. These options will be displayed as selectable choices when creating a referral: <i>(select all that apply)</i></p>
+            <ul>
+                <li>
+                    <input type="checkbox" id="dietetics" name="services_dietetics_main" value="Dietetics">
+                    <label for="dietetics">1. Dietetics</label>
+                    <ul class="hidden" id="dietetics-options">
+                        <li><input type="checkbox" name="services_dietetics" value="Specific Diet Education or Management"><label>Specific Diet Education or Management</label>
+                            <ul>
+                                <li><input type="checkbox" name="services_dietetics" value="Post-Surgical"><label>Post-Surgical</label></li>
+                                <li><input type="checkbox" name="services_dietetics" value="Chronic Disease"><label>Chronic Disease</label></li>
+                                <li><input type="checkbox" name="services_dietetics" value="Specific Diet Required"><label>Specific Diet Required</label></li>
+                            </ul>
+                        </li>
+                        <li><input type="checkbox" name="services_dietetics" value="Malnutrition Screening Tool Score of 2 or Greater"><label>Malnutrition Screening Tool Score of 2 or Greater</label></li>
+                        <li><input type="checkbox" name="services_dietetics" value="Enteral/Parental Nutrition"><label>Enteral/Parental Nutrition</label></li>
+                        <li><input type="checkbox" name="services_dietetics" value="Oral Nutritional Supplements Required"><label>Oral Nutritional Supplements Required</label></li>
+                        <li><input type="checkbox" name="services_dietetics" value="Diabetes Management"><label>Diabetes Management</label></li>
+                        <li><input type="checkbox" name="services_dietetics" value="Post-Stroke Assessment and Management"><label>Post-Stroke Assessment and Management</label></li>
+                        <li><input type="checkbox" name="services_dietetics" value="Pre or Post Natal Nutrition"><label>Pre or Post Natal Nutrition</label></li>
+                        <li>
+                            <input type="checkbox" name="services_dietetics" value="Other" class="other-checkbox">
+                            <label>Other</label>
+                            <input type="text" 
+                                   class="other-input hidden" 
+                                   name="services_dietetics_other" 
+                                   placeholder="Please specify"
+                                   style="margin-left: 10px; padding: 2px 5px;">
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <input type="checkbox" id="discharge-planning" name="services_discharge_main" value="Discharge Planning">
+                    <label for="discharge-planning">2. Discharge Planning</label>
+                    <ul class="hidden" id="discharge-planning-options">
+                        <li><input type="checkbox" name="services_discharge" value="Review for Post Discharge Services"><label>Review for Post Discharge Services</label>
+                            <ul>
+                                <li><input type="checkbox" name="services_discharge" value="Hospital in the Home"><label>Hospital in the Home</label></li>
+                                <li><input type="checkbox" name="services_discharge" value="Alternative to Inpatient Rehab"><label>Alternative to Inpatient Rehab</label></li>
+                                <li><input type="checkbox" name="services_discharge" value="Community Nursing"><label>Community Nursing</label></li>
+                                <li><input type="checkbox" name="services_discharge" value="Chronic Care Followup"><label>Chronic Care Followup</label></li>
+                                <li><input type="checkbox" name="services_discharge" value="Palliative Care"><label>Palliative Care</label></li>
+                                <li><input type="checkbox" name="services_discharge" value="Other"><label>Other</label></li>
+                            </ul>
+                        </li>
+                        <li><input type="checkbox" name="services_discharge" value="Safety in their home"><label>Safety in their home</label></li>
+                        <li><input type="checkbox" name="services_discharge" value="Patient has Caring Responsibilities"><label>Patient has Caring Responsibilities</label></li>
+                        <li><input type="checkbox" name="services_discharge" value="Transport Issues"><label>Transport Issues</label>
+                            <ul>
+                                <li><input type="checkbox" name="services_discharge" value="Out of Area Transport"><label>Out of Area Transport</label></li>
+                                <li><input type="checkbox" name="services_discharge" value="Wheelchair Accessible Transport"><label>Wheelchair Accessible Transport</label></li>
+                                <li><input type="checkbox" name="services_discharge" value="No Transport on Discharge"><label>No Transport on Discharge</label></li>
+                            </ul>
+                        </li>
+                        <li><input type="checkbox" name="services_discharge" value="Length of Stay"><label>Length of Stay</label></li>
+                        <li><input type="checkbox" name="services_discharge" value="DVA"><label>DVA</label></li>
+                        <li><input type="checkbox" name="services_discharge" value="Home Service / Care at Home"><label>Home Service / Care at Home</label></li>
+                        <li>
+                            <input type="checkbox" name="services_discharge" value="Other" class="other-checkbox">
+                            <label>Other</label>
+                            <input type="text" 
+                                   class="other-input hidden" 
+                                   name="services_discharge_other" 
+                                   placeholder="Please specify"
+                                   style="margin-left: 10px; padding: 2px 5px;">
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <input type="checkbox" id="occupational-therapy" name="services_occupational_main" value="Occupational Therapy">
+                    <label for="occupational-therapy">3. Occupational Therapy</label>
+                    <ul class="hidden" id="occupational-therapy-options">
+                        <li><input type="checkbox" name="services_occupational" value="Cognitive/Delirium Screening and/or Management"><label>Cognitive/Delirium Screening and/or Management</label></li>
+                        <li><input type="checkbox" name="services_occupational" value="Personal Care or ADL Assessment"><label>Personal Care or ADL Assessment</label></li>
+                        <li><input type="checkbox" name="services_occupational" value="Post-Surgical Management"><label>Post-Surgical Management</label></li>
+                        <li><input type="checkbox" name="services_occupational" value="Equipment Prescription"><label>Equipment Prescription</label></li>
+                        <li><input type="checkbox" name="services_occupational" value="Pressure Care Management"><label>Pressure Care Management</label></li>
+                        <li><input type="checkbox" name="services_occupational" value="Post-Stroke Management"><label>Post-Stroke Management</label></li>
+                        <li><input type="checkbox" name="services_occupational" value="Upper Limb Assessment and Management"><label>Upper Limb Assessment and Management</label></li>
+                        <li><input type="checkbox" name="services_occupational" value="Lymphoedema Management"><label>Lymphoedema Management</label></li>
+                        <li><input type="checkbox" name="services_occupational" value="Hand Therapy or Splinting"><label>Hand Therapy or Splinting</label></li>
+                        <li><input type="checkbox" name="services_occupational" value="Energy Conservation"><label>Energy Conservation</label></li>
+                        <li><input type="checkbox" name="services_occupational" value="NDIS"><label>NDIS</label></li>
+                        <li><input type="checkbox" name="services_occupational" value="Home Visit"><label>Home Visit</label></li>
+                        <li><input type="checkbox" name="services_occupational" value="Palliative Care Discharge"><label>Palliative Care Discharge</label></li>
+                        <li>
+                            <input type="checkbox" name="services_occupational" value="Other" class="other-checkbox">
+                            <label>Other</label>
+                            <input type="text" 
+                                   class="other-input hidden" 
+                                   name="services_occupational_other" 
+                                   placeholder="Please specify"
+                                   style="margin-left: 10px; padding: 2px 5px;">
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <input type="checkbox" id="physiotherapy" name="services_physiotherapy_main" value="Physiotherapy">
+                    <label for="physiotherapy">4. Physiotherapy</label>
+                    <ul class="hidden" id="physiotherapy-options">
+                        <li><input type="checkbox" name="services_physiotherapy" value="Mobility Assessment"><label>Mobility Assessment</label></li>
+                        <li><input type="checkbox" name="services_physiotherapy" value="Respiratory Assessment"><label>Respiratory Assessment</label>
+                            <ul>
+                                <li><input type="checkbox" name="services_physiotherapy" value="Altered/Decreased Respiratory Function"><label>Altered/Decreased Respiratory Function</label></li>
+                                <li><input type="checkbox" name="services_physiotherapy" value="Oxygen Requirements"><label>Oxygen Requirements</label></li>
+                                <li><input type="checkbox" name="services_physiotherapy" value="Difficulty Clearing Secretions"><label>Difficulty Clearing Secretions</label></li>
+                            </ul>
+                        </li>
+                        <li><input type="checkbox" name="services_physiotherapy" value="Pre Procedure Workup/Assessment"><label>Pre Procedure Workup/Assessment</label></li>
+                        <li><input type="checkbox" name="services_physiotherapy" value="Vestibular"><label>Vestibular</label></li>
+                        <li><input type="checkbox" name="services_physiotherapy" value="Neurological Management"><label>Neurological Management</label></li>
+                        <li><input type="checkbox" name="services_physiotherapy" value="Post-Stroke Management for Patients NOT in Stroke Ward"><label>Post-Stroke Management for Patients NOT in Stroke Ward</label></li>
+                        <li><input type="checkbox" name="services_physiotherapy" value="Post-Natal Management"><label>Post-Natal Management</label></li>
+                        <li><input type="checkbox" name="services_physiotherapy" value="Casting, Splinting, or Bracing"><label>Casting, Splinting, or Bracing (Including Spinal)</label></li>
+                        <li>
+                            <input type="checkbox" name="services_physiotherapy" value="Other" class="other-checkbox">
+                            <label>Other</label>
+                            <input type="text" 
+                                   class="other-input hidden" 
+                                   name="services_physiotherapy_other" 
+                                   placeholder="Please specify"
+                                   style="margin-left: 10px; padding: 2px 5px;">
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <input type="checkbox" id="psychology" name="services_psychology_main" value="Psychology">
+                    <label for="psychology">5. Psychology</label>
+                    <ul class="hidden" id="psychology-options">
+                        <li><input type="checkbox" name="services_psychology" value="Assessment and Diagnosis"><label>Assessment and Diagnosis</label></li>
+                        <li><input type="checkbox" name="services_psychology" value="Barrier to Discharge"><label>Barrier to Discharge</label></li>
+                        <li><input type="checkbox" name="services_psychology" value="Coping with Hospital Stay and Discharge"><label>Coping with Hospital Stay and Discharge</label></li>
+                        <li><input type="checkbox" name="services_psychology" value="Compliance to Hospital Treatment"><label>Compliance to Hospital Treatment</label></li>
+                        <li><input type="checkbox" name="services_psychology" value="Complex Family or Social Dynamics"><label>Complex Family or Social Dynamics</label>
+                            <ul>
+                                <li><input type="checkbox" name="services_psychology" value="Crisis Intervention"><label>Crisis Intervention</label></li>
+                                <li><input type="checkbox" name="services_psychology" value="Depression or Anxiety"><label>Depression or Anxiety</label></li>
+                                <li><input type="checkbox" name="services_psychology" value="Trauma"><label>Trauma</label></li>
+                                <li><input type="checkbox" name="services_psychology" value="PTSD"><label>PTSD</label></li>
+                                <li><input type="checkbox" name="services_psychology" value="Grief and Loss"><label>Grief and Loss</label></li>
+                                <li><input type="checkbox" name="services_psychology" value="Neurological or Cognitive Condition"><label>Neurological or Cognitive Condition</label></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="services_psychology" value="Other" class="other-checkbox">
+                            <label>Other</label>
+                            <input type="text" 
+                                   class="other-input hidden" 
+                                   name="services_psychology_other" 
+                                   placeholder="Please specify"
+                                   style="margin-left: 10px; padding: 2px 5px;">
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <input type="checkbox" id="social-work" name="services_social_work_main" value="Social Work">
+                    <label for="social-work">6. Social Work</label>
+                    <ul class="hidden" id="social-work-options">
+                        <li><input type="checkbox" name="services_social_work" value="Complex Discharge Planning"><label>Complex Discharge Planning</label>
+                            <ul>
+                                <li><input type="checkbox" name="services_social_work" value="Disclosure of Family Violence"><label>Disclosure of Family Violence</label></li>
+                                <li><input type="checkbox" name="services_social_work" value="Children at Risk"><label>Children at Risk</label></li>
+                                <li><input type="checkbox" name="services_social_work" value="End of Life Support"><label>End of Life Support</label></li>
+                            </ul>
+                        </li>
+                        <li><input type="checkbox" name="services_social_work" value="Career Stress"><label>Career Stress</label></li>
+                        <li><input type="checkbox" name="services_social_work" value="Social Isolation"><label>Social Isolation</label></li>
+                        <li><input type="checkbox" name="services_social_work" value="Adjustment to Illness"><label>Adjustment to Illness</label></li>
+                        <li><input type="checkbox" name="services_social_work" value="Financial and/or Housing Concerns"><label>Financial and/or Housing Concerns</label></li>
+                        <li><input type="checkbox" name="services_social_work" value="Patient Advocacy"><label>Patient Advocacy</label></li>
+                        <li><input type="checkbox" name="services_social_work" value="Future Planning"><label>Future Planning</label>
+                            <ul>
+                                <li><input type="checkbox" name="services_social_work" value="Wills"><label>Wills</label></li>
+                                <li><input type="checkbox" name="services_social_work" value="Powers of Attorney"><label>Powers of Attorney</label></li>
+                                <li><input type="checkbox" name="services_social_work" value="Advanced Care Directive"><label>Advanced Care Directive</label></li>
+                            </ul>
+                        </li>
+                        <li><input type="checkbox" name="services_social_work" value="Patient Request (Confidential)"><label>Patient Request (Confidential)</label></li>
+                        <li><input type="checkbox" name="services_social_work" value="Voluntary Assisted Dying"><label>Voluntary Assisted Dying</label>
+                            <ul>
+                                <li><input type="checkbox" name="services_social_work" value="At patient's request"><label>At patient's request</label></li>
+                                <li><input type="checkbox" name="services_social_work" value="At specialist's request"><label>At specialist's request</label></li>
+                            </ul>
+                        </li>
+                        <li><input type="checkbox" name="services_social_work" value="DVA Support"><label>DVA Support</label></li>
+                        <li><input type="checkbox" name="services_social_work" value="NDIS Support"><label>NDIS Support</label>
+                            <ul>
+                                <li><input type="checkbox" name="services_social_work" value="Patient needs information about the NDIS"><label>Patient needs information about the NDIS</label></li>
+                                <li><input type="checkbox" name="services_social_work" value="Patient is already an NDIS participant"><label>Patient is already an NDIS participant</label></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="services_social_work" value="Other" class="other-checkbox">
+                            <label>Other</label>
+                            <input type="text" 
+                                   class="other-input hidden" 
+                                   name="services_social_work_other" 
+                                   placeholder="Please specify"
+                                   style="margin-left: 10px; padding: 2px 5px;">
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <input type="checkbox" id="speech-pathology" name="services_speech_pathology_main" value="Speech Pathology">
+                    <label for="speech-pathology">7. Speech Pathology</label>
+                    <ul class="hidden" id="speech-pathology-options">
+                        <li><input type="checkbox" name="services_speech_pathology" value="Swallowing Assessment"><label>Swallowing Assessment</label>
+                            <ul>
+                                <li><input type="checkbox" name="services_speech_pathology" value="Urgent Concern NIL by Mouth"><label>Urgent Concern NIL by Mouth</label></li>
+                                <li><input type="checkbox" name="services_speech_pathology" value="General Swallowing Concern"><label>General Swallowing Concern</label></li>
+                                <li><input type="checkbox" name="services_speech_pathology" value="Failed Dysphagia Screen"><label>Failed Dysphagia Screen</label></li>
+                                <li><input type="checkbox" name="services_speech_pathology" value="Intubated > 48hrs"><label>Intubated > 48hrs</label></li>
+                                <li><input type="checkbox" name="services_speech_pathology" value="Post Head and Neck Surgical"><label>Post Head and Neck Surgical</label></li>
+                            </ul>
+                        </li>
+                        <li><input type="checkbox" name="services_speech_pathology" value="Communication Concerns"><label>Communication Concerns</label></li>
+                        <li><input type="checkbox" name="services_speech_pathology" value="Deep Brain Stimulation Post Placement"><label>Deep Brain Stimulation Post Placement</label></li>
+                        <li><input type="checkbox" name="services_speech_pathology" value="Tracheostomy/Swallow or Communication Concerns"><label>Tracheostomy/Swallow or Communication Concerns</label></li>
+                        <li>
+                            <input type="checkbox" name="services_speech_pathology" value="Other" class="other-checkbox">
+                            <label>Other</label>
+                            <input type="text" 
+                                   class="other-input hidden" 
+                                   name="services_speech_pathology_other" 
+                                   placeholder="Please specify"
+                                   style="margin-left: 10px; padding: 2px 5px;">
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div class="form-container hidden" id="sending-message">
+        <h1>Sending...</h1>
+    </div>
+    <div class="form-container hidden" id="success-message">
+        <h1>Success</h1>
+        <p>The form has successfully been submitted. Thank you.</p>
+        <button onclick="submitAnotherForm()">Submit another form</button>
+    </div>
+    <script>
+        // Show/Hide Sub-options
+        const mainCheckboxes = document.querySelectorAll("input[type='checkbox']");
+        mainCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function () {
+                const sublist = this.parentElement.querySelector('ul');
+                if (sublist) {
+                    sublist.classList.toggle('hidden', !this.checked);
+                }
+            });
+        });
+    
+        // Updated form submission handler
+        document.getElementById('referral-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            document.querySelector('.form-container[role="form"]').classList.add('hidden');
+            document.getElementById('sending-message').classList.remove('hidden');
+            
+            const formData = new FormData(event.target);
+            const jsonData = {
+                "facility-name": formData.get("facility-name"),
+                "services_dietetics_main": formData.get("services_dietetics_main") || "",
+                "services_dietetics": [],
+                "services_discharge_main": formData.get("services_discharge_main") || "",
+                "services_discharge": [],
+                "services_occupational_main": formData.get("services_occupational_main") || "",
+                "services_occupational": [],
+                "services_physiotherapy_main": formData.get("services_physiotherapy_main") || "", 
+                "services_physiotherapy": [],
+                "services_psychology_main": formData.get("services_psychology_main") || "",
+                "services_psychology": [],
+                "services_social_work_main": formData.get("services_social_work_main") || "",
+                "services_social_work": [],
+                "services_speech_pathology_main": formData.get("services_speech_pathology_main") || "",
+                "services_speech_pathology": []
+            };
+        
+            // Improved data collection
+            const serviceTypes = [
+                'dietetics', 
+                'discharge', 
+                'occupational', 
+                'physiotherapy', 
+                'psychology', 
+                'social_work', 
+                'speech_pathology'
+            ];
+        
+            serviceTypes.forEach(serviceType => {
+                // Get all checked checkboxes for this service
+                const checkedBoxes = Array.from(document.querySelectorAll(`input[name="services_${serviceType}"]:checked`));
+                
+                checkedBoxes.forEach(checkbox => {
+                    if (checkbox.value === "Other") {
+                        // Get corresponding text input
+                        const otherInput = checkbox.parentElement.querySelector(`input[name="services_${serviceType}_other"]`);
+                        if (otherInput && otherInput.value) {
+                            jsonData[`services_${serviceType}`].push(`Other: ${otherInput.value}`);
+                        }
+                    } else {
+                        jsonData[`services_${serviceType}`].push(checkbox.value);
+                    }
+                });
+            });
+        
+            // Convert arrays to newline-separated strings
+            Object.keys(jsonData).forEach(key => {
+                if (Array.isArray(jsonData[key])) {
+                    jsonData[key] = jsonData[key].join('\n');
+                }
+            });
+        
+            console.log('Form data being sent:', jsonData);
+        
+            fetch('https://prod-14.australiasoutheast.logic.azure.com:443/workflows/0461ebaf02aa44b885c236bdcfe0964b/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=-KrwRr5K0WUh-cAmn3J9S2eKOD7eN2ZMZTEljR9GLCI', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(jsonData)
+            })
+            .then(response => response.text())
+            .then(result => {
+                document.getElementById('sending-message').classList.add('hidden');
+                if (result === 'Success') {
+                    document.getElementById('success-message').classList.remove('hidden');
+                } else {
+                    document.querySelector('.form-container[role="form"]').classList.remove('hidden');
+                    alert('There was an error submitting the form. Please try again.');
+                }
+            })
+            .catch(error => {
+                document.getElementById('sending-message').classList.add('hidden');
+                document.querySelector('.form-container[role="form"]').classList.remove('hidden');
+                console.error('Error:', error);
+                alert('There was an error submitting the form. Please try again. Error: ' + error.message);
+            });
+        });
+        
+        // Function to submit another form 
+        function submitAnotherForm() {
+            // Hide success message
+            document.getElementById('success-message').classList.add('hidden');
+            
+            // Show form container
+            document.querySelector('.form-container[role="form"]').classList.remove('hidden');
+            
+            // Reset the form
+            const form = document.getElementById('referral-form');
+            form.reset();
+            
+            // Hide all sublists
+            document.querySelectorAll('ul ul').forEach(sublist => {
+                sublist.classList.add('hidden');
+            });
+            
+            // Clear all "Other" text inputs
+            document.querySelectorAll('.other-input').forEach(input => {
+                input.value = '';
+                input.classList.add('hidden');
+            });
+            
+            // Clear facility name
+            document.getElementById('facility-name').value = '';
+            
+            // Re-enable form submission
+            form.removeEventListener('submit', form.onsubmit);
+            form.addEventListener('submit', handleFormSubmit);
+        }
+
+        // Other Check Box
+        document.querySelectorAll('.other-checkbox').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const inputField = this.parentElement.querySelector('.other-input');
+                if (inputField) {
+                    inputField.classList.toggle('hidden', !this.checked);
+                    if (this.checked) {
+                        inputField.required = true;
+                    } else {
+                        inputField.required = false;
+                        inputField.value = '';
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
